@@ -14,6 +14,8 @@
         
     @endforeach
 
+    {{ $posts->links()}}
+
 @endsection
 
     
