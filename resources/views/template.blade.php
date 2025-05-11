@@ -3,23 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Plantilla Laravel</title>
+    <title>Blog Laravel</title>
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}?v=1">
 </head>
 <body>
-    <p>
-        <a href="{{ route('home')}}">Home</a>
-        <a href="{{ route('blog')}}">Blog</a>
+    <div class="container">
+        <header class="header">
+            <div class="header-left">
+                <a href="{{ route('home') }}">
+                    <img src="{{ asset('image/elefante.png') }}" alt="Logo" class="logo">
+                </a>
+                <form action="">
+                    <input type="text" placeholder="Buscar">
+                </form>
+            </div>
+            @auth
+                <a href="{{ route('dashboard') }}">Dashboard</a>
+            @else
+                <a href="{{ route('login') }}">Login</a>
+            @endauth
+        </header>
 
-         @auth
-             <a href="{{ route('dashboard')}}">Dashboard</a>
-         @else
-         <a href="{{ route('login')}}">Login</a>
-         @endauth
-    </p>
-
-    <hr>
-
-    @yield('content')
+        <main>
+            @yield('content')
+        </main>
+    </div>
 </body>
 </html>
