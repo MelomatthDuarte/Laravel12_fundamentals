@@ -37,7 +37,7 @@
                         </tr>
                         @endforeach
                     </table>
-                    {{ $posts->links() }}
+                    {{ $posts->links('vendor.pagination.custom') }}
                 </div>
             </div>
         </div>

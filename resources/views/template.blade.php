@@ -30,7 +30,7 @@
 
             @yield('content')
             <p style="padding-top: 4rem; padding-bottom: 4rem;">
-                <img src="{{ asset('image/dev.png') }}" alt="Logo" class="img-custom">
+                <img src="{{ asset('image/elefante.png') }}" alt="Logo" class="img-custom">
             </p>
         
     </div>

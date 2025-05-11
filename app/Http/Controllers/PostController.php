@@ -9,11 +9,10 @@ class PostController extends Controller
 {
     //
     public function index()
-    {
-        return view('posts.index', [
-            'posts' => Post::latest()->paginate()
-        ]);
-    }
+{
+    $posts = Post::latest()->paginate(5)->onEachSide(1); // <-- importante
+    return view('posts.index', compact('posts'));
+}
 
     public function create(Post $post)
     {
@@ -57,6 +56,13 @@ class PostController extends Controller
         ]);
         return redirect()->route('posts.edit', $post);
     }
+
+    public function show($slug)
+{
+    $post = Post::where('slug', $slug)->firstOrFail();
+
+    return view('posts.show', compact('post'));
+}
 
     public function destroy(Post $post)
     {

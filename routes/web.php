@@ -18,6 +18,8 @@ Route::get('/blog', function() {
     return view('blog');
 })->name('blog');
 
+Route::get('/posts/{slug}', [PostController::class, 'show'])->name('post');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

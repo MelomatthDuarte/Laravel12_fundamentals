@@ -1,8 +1,11 @@
 @extends('template')
 
 @section('content')
-<div>
-    <!-- Información destacada -->
+<div class="featured-section">
+    <span class="category-label">Programacion</span>
+    <h1 class="section-title">Blog</h1>
+    <p class="section-subtitle">Proyecto de Desarrollo Web para Profesionales</p>
+    <img src="{{ asset('image/dev.png')}}" alt="" class="section-image">
 </div>
 
 <div class="content">
@@ -10,7 +13,7 @@
 
     <div class="post-grid">
         @foreach ($posts as $post)
-            <a href="" class="post-link">
+            <a href="{{ route('post', $post->slug)}}" class="post-link">
                 <p class="post-info">
                     <span class="tag">Tutorial</span>
                     <span>{{ $post->created_at->format('d/m/Y') }}</span>
@@ -49,7 +52,7 @@
 
     .post-link {
         display: block;
-        background-color: #3EABF3FF; /* Tailwind Gray 100 */
+        background-color: #51AFEEFF; /* Tailwind Gray 100 */
         border-radius: 0.5rem;
         padding: 1.5rem;
         text-decoration: none;
@@ -76,7 +79,45 @@
         margin-top: 0.5rem;
     }
 
-    .pagination {
-        margin-top: 2rem;
+   
+
+    .featured-section {
+        background-color: #1A202C;
+        padding: 4rem 5rem;
+        border-radius: 0.5rem;
+        margin-bottom: 2rem;
+        position: relative;
+        overflow: hidden;
     }
+
+    .category-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        color: #4A5568;
+        background-color: #CBD5E0;
+        border-radius: 9999px;
+        padding: 0.25rem 0.5rem;
+        display: inline-block;
+    }
+
+    .section-title {
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+        color: white;
+        margin-top: 1rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.875rem;
+        color: #A0AEC0;
+        margin-top: 0.5rem;
+    }
+
+    .section-image {
+        position: absolute;
+        right: -5rem;
+        bottom: -5rem;
+        opacity: 0.2;
+    }
+
 </style>
