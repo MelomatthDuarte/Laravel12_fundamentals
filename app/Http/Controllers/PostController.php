@@ -17,7 +17,7 @@ class PostController extends Controller
 
     public function create(Post $post)
     {
-        return view('posts.create', ['post' => $post ]);
+        return view('posts.create', ['post' => new Post ]);
     }
 
     public function store(Request $request)
@@ -38,17 +38,12 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         // Validación
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'slug'  => 'required|string|unique:posts,slug,' . $post->id,
-            'body'  => 'required|string',
+        $post -> update([
+            'title' => $title = $request->title,
+            'slug' => Str::slug($title),
+            'body' => $request->body,
         ]);
-    
-        // Actualizar el post
-        $post->update($validated);
-    
-        // Redireccionar
-        return redirect()->route('posts.index')->with('success', 'Post actualizado correctamente.');
+        return redirect()->route('posts.edit', $post);
     }
 
     public function destroy(Post $post)
