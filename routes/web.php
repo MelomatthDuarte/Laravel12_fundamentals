@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
@@ -9,10 +10,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    $posts = Post::latest()->paginate(5); // Usa paginate o get
-    return view('home', compact('posts'));
-})->name('home');
+Route::get('/home', [PageController::class, 'home'])->name('home');
 
 Route::get('/blog', function() {
     return view('blog');
