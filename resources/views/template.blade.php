@@ -24,9 +24,15 @@
             @endauth
         </header>
 
-        <main>
+        <div class="custom-divider">
+
+        </div>
+
             @yield('content')
-        </main>
+            <p style="padding-top: 4rem; padding-bottom: 4rem;">
+                <img src="{{ asset('image/dev.png') }}" alt="Logo" class="img-custom">
+            </p>
+        
     </div>
 </body>
 </html>
