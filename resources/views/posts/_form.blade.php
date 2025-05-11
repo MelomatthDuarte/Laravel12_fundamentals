@@ -10,5 +10,5 @@ Formulario
 
 <div class="flex justify-between items-center">
     <a href="{{ route('posts.index')}}" class="text-indigo-600"> Volver </a>
-    <input type="submit" name="title" value="Enviar" class="bg-gray-800 text-white rounded-md px-4 py-2">
+    <button type="submit" class="bg-gray-800 text-white rounded-md px-4 py-2">Enviar</button>
 </div>
